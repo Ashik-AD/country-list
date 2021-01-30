@@ -27,7 +27,7 @@
 
 body {
     font-family: 'Nunito Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 14px;
     position: relative;
     -webkit-font-smoothing: antialiased;
@@ -36,8 +36,11 @@ body {
 .flex {
     display: flex;
 }
-.fl-col {
+.flex-col {
     flex-direction: column;
+}
+.m-5 {
+    margin: 5px 5px;
 }
 .m-10 {
     margin: 10px;
@@ -47,6 +50,9 @@ body {
 }
 .p-10 {
     padding: 10px;
+}
+.p-10-20{
+    padding: 10px 20px;
 }
 .p-20{
     padding: 20px;
@@ -70,11 +76,19 @@ body {
 button {
     border: 1px solid transparent;
     border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
 }
 li {
     list-style: none;
     list-style-type: none;
+}
+a {
+    text-decoration: none;
+    font-weight: 700;
+}
+.theme-light a {
+    color: #07b1db;
 }
 /* =================================
 =============== Light Theme========= */
@@ -131,8 +145,12 @@ li {
 =============== App Header ========= */
 
 .app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     box-shadow: 0 3px 3px #e6e6e6;
+    z-index: 111;
 }
 .app-header .flex {
     justify-content: space-between;
@@ -151,7 +169,8 @@ li {
 =============== Search and Filter ========= */
 
 .gen-act-el {
-    margin: 30px 0;
+    margin: 30px 0 30px 0;
+    padding-top: 50px;
     justify-content: space-between;
     align-items: center;
 }
@@ -174,18 +193,91 @@ li {
 }
 
 
+/* =================================
+=============== Country List ========= */
+.country-list {
+    padding: 10px;
+}
+.country-list .inner {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 10px #b8b8b8;
+}
+.country-list .flag {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+}
+.country-list img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+.country-list .info {
+    padding: 10px 10px 10px 25px;
+}
+
+.country-list .info .country-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.country-list .info .meta li {
+    margin: 5px 0;
+    font-size: 16px;
+}
+.meta li label,
+.details-wrapper label {
+    font-weight: 600;
+}
 
 
-
-
-
-
-
-
-
-
-
-
+.details-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 98vh;
+    top: 50px;
+    left: 0;
+    padding: 25px 50px;
+}
+.details-wrapper .gen {
+    width: 40%;
+    min-width: 40%;
+    padding: 15px 20px;
+}
+.details-wrapper .more-info {
+    padding: 15px 20px;
+}
+.details-wrapper .flag img {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+}
+.gen h2 {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 5px auto;
+    display: block;
+    text-align: center;
+}
+.details-wrapper label {
+    font-size: 17px;
+    white-space: nowrap;
+}
+.details-wrapper article.flex {
+    align-items: center;
+}
+.details-wrapper article span {
+    font-size: 16px;
+    padding: 0 10px;
+    font-weight: 600;
+}
+button ion-icon {
+    position: relative;
+    top: 3px;
+}
 @media(min-width: 1200px){
     .container {
         width: 1170px;
