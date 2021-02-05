@@ -1,9 +1,12 @@
 const countryWrapper = document.querySelector('.country-list-wrapper');
-
+const label = (rg) => {
+    const reg = rg.toLowerCase();
+    return reg === 'asia' ? 'Fg-xbkzJMW' : reg === 'americas' ? '9MAErKeJUa' : reg === 'africa' ? 'Pz96EAafXs' : reg === 'europe' ? 'dkC79_7j8q' : 'tU5FGUNiBa';
+}
 const renderMarkUp = dt => {
     const markup = `
-        <div class="country-list">
-            <div class="inner flex flex-col th-element">
+        <div class="country-list" data-reg="${label(dt.region)}">
+            <div class="inner flex flex-col th-element bxs">
                 <div class="flag" style="background-image: url(${dt.flag})">
                 </div>
                 <div class="info">
@@ -13,7 +16,7 @@ const renderMarkUp = dt => {
                         <li><label>Region: </label>${dt.region}</li>
                         <li><label>Population: </label>${dt.population}</li>
                     </ul>
-                    <a href="#detail/${dt.name}">View More</a>
+                    <a href="#details/${dt.name}">View More</a>
                 </div>
             </div>
         </div>
@@ -22,7 +25,10 @@ const renderMarkUp = dt => {
 }
 
 function RenderCountry(arr) {
-    return arr.forEach(el => renderMarkUp(el))
+    if (arr.length >= 1) {
+        return arr.forEach(el => renderMarkUp(el))       
+    }
+    return false;
 }
 
 export default RenderCountry;
