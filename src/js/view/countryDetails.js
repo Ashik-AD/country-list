@@ -1,15 +1,19 @@
 const container = document.querySelector('.country-details');
 
 export async function countryDetails(obj) {
-    container.innerHTML = '';
-    const as = await obj.borderCountry();
-    let html = `
-        <div class="details-wrapper th-element">
-           <a href="#details/"> <button class="btn-back" style="padding: 8px 20px;"><ion-icon name="play-back-outline"></ion-icon> Back</button></a>
+    if (obj) {
+        container.innerHTML = '';
+        const as = await obj.borderCountry();
+        let html = `
+        <div class="details-wrapper th-element dr">
+        <div class="container">
+            <a href="#"><button class="btn-back bxs" style="padding: 8px 15px;">
+                    <ion-icon name="arrow-back-outline"></ion-icon> Back
+                </button></a>
             <div class="main flex">
                 <div class="gen">
-                    <div class="flag">
-                        <img src=${obj.flag_url} atl=${obj.name} />
+                    <div class="flag"
+                        style="background-image:url(${obj.flag_url}); ${obj.name === 'Nepal' ? `background-size: contain;` : ''}">
                     </div>
                     <h2 class="country-name">${obj.name}</h2>
                 </div>
@@ -52,7 +56,12 @@ export async function countryDetails(obj) {
                     </article>
                     <article class="info-list flex">
                         <label>Timezone : </label>
-                        <span>${obj.timezone.map(el => ` ${el}`)}</span>
+                        <div class="acc-wrapper">
+                            <span class="${obj.timezone.length > 2 ? 'acc th-element bxs' : ''}">
+                            ${obj.timezone.map(el => ` ${el}`)}
+                            <ion-icon name="caret-forward" class="btn-op-ac" onclick="handleOverflow(event);false;"></ion-icon>
+                            </span>
+                        </div>
                     </article>
                     <article class="info-list flex">
                         <label>Area : </label>
@@ -74,17 +83,40 @@ export async function countryDetails(obj) {
                         <label>Regional Blocs : </label>
                         <span>${obj.regionBlocs.map(el => `${el.name}, ${el.acronym}`)}</span>
                     </article>
-                    <article class="borders">
-                        <label>Border Contries</label>
-                        <br>
-                        <div>
-                            ${as.map(el => `<a href="#details/${el}"><button class="p-10-20 m-5">${el}</button></a>`)}
+                    <article class="borders flex">
+                        <label>Border Contries:</label>
+                        <div class="acc-wrapper">
+                            <div class="${as.length > 0 ? 'acc th-element bxs': ''}">
+                            ${as.map(el => `<a href="#details/${el}"><button class="p-10-20 m-5 th-element bxs">${el}</button></a>`)}
+                            <ion-icon name="caret-forward" class="btn-op-ac" onclick="handleOverflow(event);false;"></ion-icon>
+                            </div>
                         </div>
                     </article>
-                </div>
             </div>
         </div>
-    `;
-    document.body.style.overflow = 'hidden';
-    return container.insertAdjacentHTML('beforeend', html);
+        </div>
+            <div class="mapPhoto grid grid-2">
+            <div id="map">
+            </div>
+            <div class="photo grid grid-3">
+            </div>
+        </div>
+        <div class="img-modal th-element"></div>
+    </div>
+        `;
+        document.body.style.overflow = 'hidden';
+        return container.insertAdjacentHTML('beforeend', html);
+    }
+    return;
+}
+
+
+window.handleOverflow = eve => {
+    const parent = eve.target.parentElement;
+    if (parent.scrollHeight > parent.clientHeight) {
+        parent.classList.add('show-acc');
+    }
+    else {
+        parent.classList.remove('show-acc');
+    }
 }
