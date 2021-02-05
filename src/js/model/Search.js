@@ -4,21 +4,19 @@ class Search {
     constructor(key) {
         this.searchKey = key;
     }
-    
-    searchByName() {
+    searchByName(){
         const getCountry = async () => {
-            const req = await axios.get(`https://restcountries.eu/rest/v2/name/${this.searchKey}`);
-            return await extractData(req.data[0]);
+            try {
+                const req = await axios.get(`https://restcountries.eu/rest/v2/name/${this.searchKey}`);
+                return await extractData(req.data[0]); 
+            } catch (error) {
+                console.log(error)
+                return false;
+            }
         }
-        return getCountry();
+        return getCountry()
     }
-    searchByRegion() {
-         const regions = async () => {
-            const req = await axios.get(`https://restcountries.eu/rest/v2/region/${this.searchKey}`)
-            return req;
-        }
-        return regions();
-    }
+
     async searchByCountryCode(list) {
         const country = async () => {
             const req = await axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${list}`)
@@ -29,13 +27,6 @@ class Search {
     async getCountryNameOnly(code) {
         const req = await axios.get(`https://restcountries.eu/rest/v2/alpha?codes=${code};`);
         return req.data[0].name
-    }
-    searchByLanguage() {
-        const getByLan = async () => {
-            const req = await axios.get(`https://restcountries.eu/rest/v2/lang/${this.searchKey}`)
-            return req;
-        } 
-        return getByLan();
     }
 }
 
@@ -53,7 +44,7 @@ async function extractData(obj) {
         language: [],
         currency: [],
         timezone: [],
-        area: obj.area,
+        area: FormatInter(obj.area),
         cords: obj.latlng,
         region: obj.region,
         subRegion: obj.subregion,
@@ -86,7 +77,6 @@ async function extractData(obj) {
     pr.regionBlocs = regionBlocs;
     return pr;
 }
-
 
 module.exports = {
     extractData,
