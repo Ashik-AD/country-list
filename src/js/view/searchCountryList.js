@@ -1,5 +1,5 @@
 const markUp = (name, flag) => {
-    return `<li class="country-name" data-id="${name}"><a href="#details/${encodeURIComponent(name)}" id="ac-cnt"> <img src="${flag}" alt="${name}" />${name}</a></li>`
+    return `<li class="country-name" data-id="${name}"><a href="#details/${encodeURIComponent(name)}" class="ac-cnt"> <img src="${flag}" alt="${name}" />${name}</a></li>`
 }
 export const searchCountryList = arr => {
     const searchWrp = document.querySelector('.search-list');
