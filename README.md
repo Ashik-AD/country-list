@@ -1,7 +1,7 @@
 ## H A P P Y C O D I N G 👨‍💻👨‍💻
 # My 🌎 My Country
 
-## Search for country
+## [Search for country] (https://maxiashik.netlify.app/)
 
 Search for country ready for provide you latest information about countries. You can use this project and implement functionality as your need. This project relia on different API service provider; and access these API requires security (API KEY). Please do not use any API key from this project. You can add your own API key for this project by creating an account for free.
 
@@ -21,6 +21,6 @@ Search for country ready for provide you latest information about countries. You
     ```git clone https://github.com/Ashik-AD/country-list.git```
 2. Goto where cloned folder located and open with your command tool
 
-3. Run ```npm install``
-
+3. Install all dependancy
+    ```npm install``
 4. Waalah ready for coding
