@@ -22,5 +22,5 @@ Search for country ready for provide you latest information about countries. You
 2. Goto where cloned folder located and open with your command tool
 
 3. Install all dependancy
-    ```npm install``
+    ```npm install```
 4. Waalah ready for coding
