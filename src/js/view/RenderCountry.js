@@ -16,7 +16,7 @@ const renderMarkUp = dt => {
                         <li><label>Region: </label>${dt.region}</li>
                         <li><label>Population: </label>${dt.population}</li>
                     </ul>
-                    <a href="#details/${dt.name}">View More</a>
+                    <a href="#details/${encodeURIComponent(dt.name)}">View More</a>
                 </div>
             </div>
         </div>

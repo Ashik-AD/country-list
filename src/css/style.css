@@ -230,7 +230,8 @@ a {
     background-color: rgb(201, 201, 201);
     border-radius: 8px;
 }
-.search-list li {
+.search-list li a{
+    display: block;
     font-weight: 600;
     padding: 5px 10px;
     cursor: pointer;
